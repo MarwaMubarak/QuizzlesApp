@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
@@ -98,6 +99,13 @@ class QuizCubit extends Cubit<QuizState> {
         [Colors.white,Colors.white,Colors.white,Colors.white],
         [Colors.white,Colors.white,Colors.white,Colors.white],
       ];
+      // print("-------------------------------------------------");
+      // print(SharedPreference.getData(key: quiz.name));
+      int mx=max(score, SharedPreference.getData(key: quiz.name));
+      SharedPreference.saveData(key: quiz.name, value: mx);
+      // print(mx);
+      // print(SharedPreference.getData(key: quiz.name));
+      // print("-------------------------------------------------");
       Navigate.navigateAndRemoveAll(context, ResultScreen(score: score));
     }
     emit(nextState());
@@ -127,7 +135,6 @@ class QuizCubit extends Cubit<QuizState> {
         [Colors.white,Colors.white,Colors.white,Colors.white],
         [Colors.white,Colors.white,Colors.white,Colors.white],
       ];
-      SharedPreference.saveData(key: quiz.name, value: score);
       Navigate.navigateAndRemoveAll(context, LevelsScreen());
 
     }

@@ -45,12 +45,12 @@ class ResultScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Your final score is",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                        Text("Your final score is",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
                         SizedBox(height: 12,),
                         CircleAvatar(
                           radius: 90,
                           backgroundColor: Color(0xffFAB62C),
-                          child: Text(score.toString(),style: TextStyle(fontSize: 36,color: Colors.white),),
+                          child: Text(score.toString(),style: TextStyle(fontSize: 70,color: Colors.white,fontWeight: FontWeight.bold),),
                         )
                       ],
                     ),

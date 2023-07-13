@@ -52,19 +52,19 @@ class QuizScreen extends StatelessWidget {
                     children: [
                       CustomButton(name:cubit.quiz.questions[cubit.curQ].choices[0] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(0);
-                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][0], fontColor: cubit.fontColor[cubit.curQ][0], fontSize: 25,num:1),
+                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][0], fontColor: cubit.fontColor[cubit.curQ][0], fontSize: 25,num:"01"),
                       SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[1] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(1);
-                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][1], fontColor: cubit.fontColor[cubit.curQ][1], fontSize: 25,num: 2),
+                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][1], fontColor: cubit.fontColor[cubit.curQ][1], fontSize: 25,num: "02"),
                       SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[2] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(2);
-                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][2], fontColor: cubit.fontColor[cubit.curQ][2], fontSize: 25,num: 3),
+                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][2], fontColor: cubit.fontColor[cubit.curQ][2], fontSize: 25,num: "03"),
                       SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[3] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(3);
-                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][3], fontColor: cubit.fontColor[cubit.curQ][3], fontSize: 25,num: 4),
+                      }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][3], fontColor: cubit.fontColor[cubit.curQ][3], fontSize: 25,num: "04"),
 
                     ],
                   ),

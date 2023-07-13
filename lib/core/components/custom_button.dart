@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         required this.num,
       }
       );
-  int num;
+  String num;
   String name;
   double height;
   double width;
@@ -44,9 +44,11 @@ class CustomButton extends StatelessWidget {
         child:Row(
           children: [
             CircleAvatar(
-              radius: 10,
-              child: Text(num.toString(),style: TextStyle(color: Colors.white,fontSize: 16),),
+              radius: 13,
+              backgroundColor: AppColors.sixthColor,
+              child: Text(num,style: TextStyle(color: Colors.white,fontSize: 14),),
             ),
+            SizedBox(width: 8,),
             Text(name,style: TextStyle(color: fontColor,fontSize: fontSize,)),
           ],
         ),

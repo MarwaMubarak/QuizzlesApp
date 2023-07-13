@@ -1,43 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shapes/flutter_shapes.dart';
-import 'dart:math';
-import 'package:quizzles_app/core/utils/navigate.dart';
-import 'package:quizzles_app/screens/quiz_screen.dart';
-
-import '../../models/quiz_model.dart';
+import 'package:quizzles_app/core/components/level_component_helper.dart';
+import 'package:quizzles_app/core/style/colors.dart';
 class LevelComponent extends StatelessWidget {
   String name;
   int score;
   Color color;
-  QuizModel quizModel;
-  LevelComponent({required this.name, required this.score,required this.color,required this.quizModel});
-
+   Color s1;
+   Color s2;
+   Color s3;
+   bool lock;
+  LevelComponent({required this.name, required this.score,required this.color,  required this.s1,required this.s2,required this.s3,required this.lock
+  });
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
-      onTap: (){
-        Navigate.navigateWithBack(context, QuizScreen(quizModel: quizModel,idx: 0,));
-      },
-      child: Container(
-        child: Stack(
-          alignment: Alignment.center,
+    return Container(
+      height: 260,
+      width: 160,
+      child: Stack(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.pentagon,size: 180,color: color,),
-              Column(
+              Icon(Icons.star,size: 40,color: s2,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 70,),
-                  Text("Level ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white,height: 1.5),),
-                  Text(name,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                  Icon(Icons.star,size: 40,color: s1),
+                  SizedBox(width: 70,),
+                  Icon(Icons.star,size: 40,color: s3),
                 ],
               ),
+              SizedBox(height: 180,),
+            ],
+          ),
+          Positioned(
+            top: 30,
+              height: 140,
+              child: LevelComponentHelper(name: name, score: score, color: color)),
 
+          (lock==true)?Positioned(
+            top: 60,
+              left: 65,
+              child: Icon(Icons.lock,size: 40,color: AppColors.star1Color,)):
+              Container(),
 
-            ]
-        ),
+        ],
       ),
     );
   }
-
-
-
 }

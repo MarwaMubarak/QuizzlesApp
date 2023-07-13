@@ -6,6 +6,11 @@ class AppColors{
   static const fourthColor = Color(0xff6949fd);
   static const fifthColor = Color(0xff37e9bb);
   static const sixthColor = Color(0xff6049C4);
+  static const star1Color = Color(0xffFBB72A);
+  static const star2Color = Color(0xff523640);
+
+
+
 
 
 
