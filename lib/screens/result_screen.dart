@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quizzles_app/core/components/button_icon.dart';
 import 'package:quizzles_app/core/style/colors.dart';
-import 'package:quizzles_app/core/components/button.dart';
 import 'package:quizzles_app/core/utils/navigate.dart';
 import 'package:quizzles_app/screens/home_screen.dart';
-class ResultScreen extends StatelessWidget {
-  int score ;
 
-  ResultScreen({required this.score});
+class ResultScreen extends StatelessWidget {
+  int score;
+
+  ResultScreen({super.key, required this.score});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,10 @@ class ResultScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
-        title: Text("Results",style: TextStyle(color: AppColors.fifthColor),),
+        title: const Text(
+          "Results",
+          style: TextStyle(color: AppColors.fifthColor),
+        ),
       ),
       body: Scaffold(
         backgroundColor: AppColors.primaryColor,
@@ -26,46 +29,74 @@ class ResultScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Total correct answers",style: TextStyle(color: Colors.white,fontSize: 20),),
-                SizedBox(height: 8,),
-                Text("$score out of 6",style: TextStyle(color: AppColors.fifthColor,fontSize:25 ),),
-
+                const Text(
+                  "Total correct answers",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "$score out of 6",
+                  style: const TextStyle(color: AppColors.fifthColor, fontSize: 25),
+                ),
               ],
             ),
-
-
             Center(
-              child: Container(
+              child: SizedBox(
                 height: 350,
                 width: 330,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(35)),
+                    color: AppColors.sixthColor,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Your final score is",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
-                        SizedBox(height: 12,),
+                        const Text(
+                          "Your final score is",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
                         CircleAvatar(
                           radius: 90,
-                          backgroundColor: Color(0xffFAB62C),
-                          child: Text(score.toString(),style: TextStyle(fontSize: 70,color: Colors.white,fontWeight: FontWeight.bold),),
+                          backgroundColor: const Color(0xffFAB62C),
+                          child: Text(
+                            score.toString(),
+                            style: const TextStyle(
+                                fontSize: 70,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                         )
                       ],
                     ),
-                    color: AppColors.sixthColor,
-
                   ),
                 ),
               ),
             ),
-            ButtonIcon(name: "Try Again", height: 60, width: 320, action: (){Navigate.navigateAndRemoveAll(context, HomeScreen());}, borderColor: AppColors.fourthColor, backgroundColor: AppColors.fourthColor, fontColor: Colors.white, fontSize: 25,iconData: Icons.cached),
-
+            ButtonIcon(
+                name: "Try Again",
+                height: 60,
+                width: 320,
+                action: () {
+                  Navigate.navigateAndRemoveAll(context, const HomeScreen());
+                },
+                borderColor: AppColors.fourthColor,
+                backgroundColor: AppColors.fourthColor,
+                fontColor: Colors.white,
+                fontSize: 25,
+                iconData: Icons.cached),
           ],
         ),
       ),
-
     );
   }
 }

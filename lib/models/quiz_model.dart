@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:quizzles_app/models/question_model.dart';
 
 class QuizModel{

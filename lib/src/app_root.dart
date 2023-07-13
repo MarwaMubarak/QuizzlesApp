@@ -3,7 +3,6 @@ import 'package:quizzles_app/blocs/levels/levels_cubit.dart';
 import 'package:quizzles_app/blocs/quiz/quiz_cubit.dart';
 import 'package:quizzles_app/screens/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class AppRoot extends StatelessWidget {
           BlocProvider(create: (BuildContext context) => QuizCubit()),
 
         ],
-        child: MaterialApp(
+        child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: HomeScreen(),
         ));

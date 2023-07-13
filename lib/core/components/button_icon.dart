@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../style/colors.dart';
 class ButtonIcon extends StatelessWidget {
+  ButtonIcon({
+    super.key,
+    required this.name,
+    required this.height,
+    required this.width,
+    required this.action,
+    required this.borderColor,
+    required this.backgroundColor,
+    required this.fontColor,
+    required this.fontSize,
+    required this.iconData,
+  });
 
-
-
-  ButtonIcon(
-      { required this.name,
-      required this.height,
-      required this.width,
-      required this.action,
-        required this.borderColor,
-      required this.backgroundColor,
-      required this.fontColor,
-      required this.fontSize,
-        required this.iconData,
-      }
-);
   IconData iconData;
   String name;
   double height;
@@ -27,32 +24,37 @@ class ButtonIcon extends StatelessWidget {
   Color borderColor;
   double fontSize;
 
-
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return SizedBox(
       height: height,
       width: width,
       child: ElevatedButton(
-          onPressed: action,
-          style: ElevatedButton.styleFrom(
-              side: BorderSide(color: borderColor,width: 2),
-              padding: EdgeInsets.all(10),
-              backgroundColor: backgroundColor,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
-          ),
-          child:Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(iconData,color: Colors.white,),
-              SizedBox(width: 5,),
-              Text(name,style: TextStyle(color: fontColor,fontSize: fontSize,)),
-
-            ],
-          ),
-
-
-    ),
+        onPressed: action,
+        style: ElevatedButton.styleFrom(
+            side: BorderSide(color: borderColor, width: 2),
+            padding: const EdgeInsets.all(10),
+            backgroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              iconData,
+              color: Colors.white,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Text(name,
+                style: TextStyle(
+                  color: fontColor,
+                  fontSize: fontSize,
+                )),
+          ],
+        ),
+      ),
     );
   }
 }

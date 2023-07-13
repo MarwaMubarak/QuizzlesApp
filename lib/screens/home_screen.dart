@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:quizzles_app/core/components/button.dart';
@@ -29,8 +28,8 @@ class HomeScreen extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text("Let's Play!",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,height: 3)),
-                  Text("Play now and Level up",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold,height: 2)),
+                  const Text("Let's Play!",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,height: 3)),
+                  const Text("Play now and Level up",style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold,height: 2)),
 
                 ],
               ),
@@ -48,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                       Navigate.navigateWithBack(context, LevelsScreen());
                     },
                   ),
-                  SizedBox(height: 18,),
+                  const SizedBox(height: 18,),
                   Button(name: "About", height: 55, width: 290, action: (){}, backgroundColor: AppColors.primaryColor, fontColor: AppColors.fourthColor, fontSize: 25,borderColor: AppColors.fourthColor,),
 
 

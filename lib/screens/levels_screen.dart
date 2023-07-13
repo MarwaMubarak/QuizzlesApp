@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:quizzles_app/blocs/levels/levels_cubit.dart';
 import 'package:quizzles_app/core/components/level_component.dart';
-import 'package:quizzles_app/core/components/level_component_helper.dart';
 import 'package:quizzles_app/core/shared_reference/shared_preference.dart';
 import 'package:quizzles_app/core/style/colors.dart';
 import 'package:quizzles_app/core/utils/navigate.dart';
-import 'package:quizzles_app/screens/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizzles_app/screens/quiz_screen.dart';
 
 class LevelsScreen extends StatelessWidget {
+  const LevelsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LevelsCubit, LevelsState>(
@@ -23,7 +23,7 @@ class LevelsScreen extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             backgroundColor: AppColors.primaryColor,
-            title: Text(
+            title: const Text(
               "Levels",
               style: TextStyle(
                   color: AppColors.fifthColor,
@@ -39,7 +39,7 @@ class LevelsScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
                     Row(
                       children: [
                         GestureDetector(
@@ -59,7 +59,7 @@ class LevelsScreen extends StatelessWidget {
                               lock: cubit.myState[2*(index)]==-1,
                             )
                         ),
-                        SizedBox(width: 5,),
+                        const SizedBox(width: 5,),
                         GestureDetector(
                           onTap: (){
                             String level="0${2*index+2}";
@@ -95,15 +95,3 @@ class LevelsScreen extends StatelessWidget {
 }
 
 
-//LevelComponent(color: cubit.backgroundColor[2*(index)],score: (SharedPreference.getData(key: ((2*(index)+1!=10)?"0${2*(index)+1}":"10"))==null?0:SharedPreference.getData(key: ((2*(index)+1!=10)?"0${2*(index)+1}":"10"))),name: ((2*(index)+1!=10)?"0${2*(index)+1}":"10"),)
-//LevelComponent(color: cubit.backgroundColor[2*(index)+1],score: (SharedPreference.getData(key: ((2*(index)+2!=10)?"0${2*(index)+2}":"10"))==null?0:SharedPreference.getData(key: ((2*(index)+2!=10)?"0${2*(index)+2}":"10"))),name: ((2*(index)+2!=10)?"0${2*(index)+2}":"10"),),
-
-// GestureDetector(
-// onTap: (){
-// String level= (index!=10)?"0${index+1}":"10";
-// Navigate.navigateWithBack(context, QuizScreen(quizModel:cubit.quizzes[level],idx: 0,));
-// },
-// child: LevelComponent(color: Colors.indigo,score: (SharedPreference.getData(key: ((index!=10)?"0${index+1}":"10"))==null?0:SharedPreference.getData(key: ((index!=10)?"0${index+1}":"10"))),name: ((index!=10)?"0${index+1}":"10"),)
-// ),
-// s1: cubit.starColor[2*(index)+1][0],s2: cubit.starColor[2*(index)+1][1],s3: cubit.starColor[2*(index)+1][2],
-// s1: cubit.starColor[2*(index)+2][0],s2: cubit.starColor[2*(index)+2][1],s3: cubit.starColor[2*(index)+2][2],

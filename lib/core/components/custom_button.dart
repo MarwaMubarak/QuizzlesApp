@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
 
 
   CustomButton(
-      { required this.name,
+      {super.key,  required this.name,
         required this.height,
         required this.width,
         required this.action,
@@ -30,14 +30,14 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  SizedBox(
       height: height,
       width: width,
       child: ElevatedButton(
         onPressed: action,
         style: ElevatedButton.styleFrom(
             side: BorderSide(color: borderColor,width: 2),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
         ),
@@ -46,9 +46,9 @@ class CustomButton extends StatelessWidget {
             CircleAvatar(
               radius: 13,
               backgroundColor: AppColors.sixthColor,
-              child: Text(num,style: TextStyle(color: Colors.white,fontSize: 14),),
+              child: Text(num,style: const TextStyle(color: Colors.white,fontSize: 14),),
             ),
-            SizedBox(width: 8,),
+            const SizedBox(width: 8,),
             Text(name,style: TextStyle(color: fontColor,fontSize: fontSize,)),
           ],
         ),

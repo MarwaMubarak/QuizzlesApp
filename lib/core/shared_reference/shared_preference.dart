@@ -1,6 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/quiz_model.dart';
 
 class SharedPreference {
   static SharedPreferences ?sharedPreferences;

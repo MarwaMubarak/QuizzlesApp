@@ -13,6 +13,6 @@ class Navigate {
   static navigateAndRemoveAll(context, to) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => to),
-            (Route<dynamic> route) => false);
+        (Route<dynamic> route) => false);
   }
 }

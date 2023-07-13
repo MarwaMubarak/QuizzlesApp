@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quizzles_app/blocs/quiz/quiz_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizzles_app/core/components/button.dart';
-import 'package:quizzles_app/core/components/button_icon.dart';
 import 'package:quizzles_app/core/style/colors.dart';
 
 import '../core/components/custom_button.dart';
@@ -11,7 +10,7 @@ import '../models/quiz_model.dart';
 class QuizScreen extends StatelessWidget {
   QuizModel? quizModel ;
   int idx;
-  QuizScreen({required this.quizModel,required this.idx});
+  QuizScreen({super.key, required this.quizModel,required this.idx});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class QuizScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.primaryColor,
-            title: Text("Level ${quizModel!.name}",style: TextStyle(color: AppColors.fifthColor,fontSize: 20,fontWeight: FontWeight.bold),),
+            title: Text("Level ${quizModel!.name}",style: const TextStyle(color: AppColors.fifthColor,fontSize: 20,fontWeight: FontWeight.bold),),
             centerTitle: true,
           ),
           backgroundColor: AppColors.primaryColor,
@@ -38,8 +37,8 @@ class QuizScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("${cubit.curQ+1}/6",style: TextStyle(fontSize: 16,color: AppColors.fifthColor,),),
-                    Text(cubit.quiz.questions[cubit.curQ].question,style: TextStyle(fontSize: 26,color: Colors.white)),
+                    Text("${cubit.curQ+1}/6",style: const TextStyle(fontSize: 16,color: AppColors.fifthColor,),),
+                    Text(cubit.quiz.questions[cubit.curQ].question,style: const TextStyle(fontSize: 26,color: Colors.white)),
 
                   ],
                 ),
@@ -53,22 +52,22 @@ class QuizScreen extends StatelessWidget {
                       CustomButton(name:cubit.quiz.questions[cubit.curQ].choices[0] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(0);
                       }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][0], fontColor: cubit.fontColor[cubit.curQ][0], fontSize: 25,num:"01"),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[1] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(1);
                       }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][1], fontColor: cubit.fontColor[cubit.curQ][1], fontSize: 25,num: "02"),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[2] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(2);
                       }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][2], fontColor: cubit.fontColor[cubit.curQ][2], fontSize: 25,num: "03"),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       CustomButton(name: cubit.quiz.questions[cubit.curQ].choices[3] , height: 55, width: 320, action: (){
                         cubit.selectAnswer(3);
                       }, borderColor: AppColors.thirdColor, backgroundColor: cubit.backgroundColor[cubit.curQ][3], fontColor: cubit.fontColor[cubit.curQ][3], fontSize: 25,num: "04"),
 
                     ],
                   ),
-                  SizedBox(height: 13,),
+                  const SizedBox(height: 13,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
