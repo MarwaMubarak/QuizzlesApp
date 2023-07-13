@@ -9,7 +9,6 @@ import 'package:quizzles_app/core/shared_reference/shared_preference.dart';
 import 'package:quizzles_app/core/style/colors.dart';
 import 'package:quizzles_app/core/utils/navigate.dart';
 import 'package:quizzles_app/models/quiz_model.dart';
-import 'package:quizzles_app/models/question_model.dart';
 import 'package:quizzles_app/screens/levels_screen.dart';
 import 'package:quizzles_app/screens/quiz_screen.dart';
 
@@ -25,7 +24,6 @@ class QuizCubit extends Cubit<QuizState> {
   late QuizModel quiz;
   int score=0;
   List<int>answer=[0,0,0,0,0,0,0];
-
   List<List<Color>>backgroundColor=[
     [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
     [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
@@ -49,27 +47,16 @@ class QuizCubit extends Cubit<QuizState> {
     emit(initState());
   }
   void selectAnswer(int idx){
-
     if(quiz.questions[curQ].choices[idx]==quiz.questions[curQ].answer){
       answer[curQ]=1;
     }else{
       answer[curQ]=0;
     }
-    backgroundColor[curQ][0]=AppColors.primaryColor;
-    backgroundColor[curQ][1]=AppColors.primaryColor;
-    backgroundColor[curQ][2]=AppColors.primaryColor;
-    backgroundColor[curQ][3]=AppColors.primaryColor;
-    fontColor[curQ][0]=Colors.white;
-    fontColor[curQ][1]=Colors.white;
-    fontColor[curQ][2]=Colors.white;
-    fontColor[curQ][3]=Colors.white;
-
-
+    clear();
     selected=idx;
     backgroundColor[curQ][selected]=AppColors.fifthColor;
     fontColor[curQ][selected]=AppColors.primaryColor;
 
-    print("${ backgroundColor[0]}   ${ backgroundColor[1]}   ${ backgroundColor[2]}   ${ backgroundColor[3]}   ");
     emit(selectState());
   }
   void next(context){
@@ -84,28 +71,9 @@ class QuizCubit extends Cubit<QuizState> {
         score+=answer[i];
         answer[i]=0;
       }
-      backgroundColor=[
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor]];
-      fontColor=[
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-      ];
-      // print("-------------------------------------------------");
-      // print(SharedPreference.getData(key: quiz.name));
+     clear();
       int mx=max(score, SharedPreference.getData(key: quiz.name));
       SharedPreference.saveData(key: quiz.name, value: mx);
-      // print(mx);
-      // print(SharedPreference.getData(key: quiz.name));
-      // print("-------------------------------------------------");
       Navigate.navigateAndRemoveAll(context, ResultScreen(score: score));
     }
     emit(nextState());
@@ -120,25 +88,29 @@ class QuizCubit extends Cubit<QuizState> {
       for(int i=0;i<7;i++){
         answer[i]=0;
       }
-      backgroundColor=[
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
-        [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor]];
-      fontColor=[
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-        [Colors.white,Colors.white,Colors.white,Colors.white],
-      ];
+      clear();
       Navigate.navigateAndRemoveAll(context, LevelsScreen());
 
     }
     emit(previousState());
+  }
+  clear(){
+    backgroundColor=[
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor],
+      [AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor,AppColors.primaryColor]];
+    fontColor=[
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+      [Colors.white,Colors.white,Colors.white,Colors.white],
+    ];
+    emit(clearState());
   }
 
 

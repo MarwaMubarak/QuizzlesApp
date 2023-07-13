@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizzles_app/core/components/level_component_helper.dart';
 import 'package:quizzles_app/core/shared_reference/shared_preference.dart';
 import 'package:quizzles_app/core/style/colors.dart';
 import 'package:quizzles_app/models/quiz_model.dart';
@@ -89,24 +88,6 @@ class LevelsCubit extends Cubit<LevelsState> {
       QuestionModel(number: 6, question: "What is this ?", image: "assets/images/6.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
       QuestionModel(number: 7, question: "What is this ?", image: "assets/images/1.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
     ]) ,
-    "09": QuizModel(score: 0, name: "09", questions: [
-      QuestionModel(number: 1, question: "What is this ?", image: "assets/images/1.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 2, question: "What is this ?", image: "assets/images/2.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 3, question: "What is this ?", image: "assets/images/3.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 4, question: "What is this ?", image: "assets/images/4.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 5, question: "What is this ?", image: "assets/images/5.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 6, question: "What is this ?", image: "assets/images/6.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 7, question: "What is this ?", image: "assets/images/1.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-    ]),
-    "10": QuizModel(score: 0, name: "10", questions: [
-      QuestionModel(number: 1, question: "What is this ?", image: "assets/images/1.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 2, question: "What is this ?", image: "assets/images/2.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 3, question: "What is this ?", image: "assets/images/3.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 4, question: "What is this ?", image: "assets/images/4.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 5, question: "What is this ?", image: "assets/images/5.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 6, question: "What is this ?", image: "assets/images/6.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-      QuestionModel(number: 7, question: "What is this ?", image: "assets/images/1.jpg", choices: ["marwa","ahmed","mohamed","mubarak"], answer: "marwa"),
-    ]),
   };
   List<List<Color>>starColor=[[AppColors.star2Color,AppColors.star2Color,AppColors.star2Color,],
     [AppColors.star2Color,AppColors.star2Color,AppColors.star2Color,],
@@ -158,10 +139,7 @@ class LevelsCubit extends Cubit<LevelsState> {
     calcScore(quizzes["06"]?.score,5);
     calcScore(quizzes["07"]?.score,6);
     calcScore(quizzes["08"]?.score,7);
-    // print("-> ${myState[0]}  ${myState[1]}  ${myState[2]}  ${myState[3]}  ${myState[4]}  ${myState[5]}  ${myState[6]}    ${myState[7]}");
     myState[0]=(quizzes["01"]!.score>0?1:0);
-    // print(SharedPreference.getData(key: "01"));
-    // print(myState[0]);
     for(int i=1;i<=7;i++){
       if(myState[0]==0) {
         break;
@@ -171,7 +149,6 @@ class LevelsCubit extends Cubit<LevelsState> {
         break;
       }
     }
-    // print("-- ${myState[0]}  ${myState[1]}  ${myState[2]}  ${myState[3]}  ${myState[4]}  ${myState[5]}  ${myState[6]}  ${myState[7]} ");
 
 
     emit(initState());
